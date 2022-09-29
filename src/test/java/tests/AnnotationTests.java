@@ -8,7 +8,7 @@ package tests;
 
 public class AnnotationTests {
 
-    private WebDriver driver;
+    protected WebDriver driver;
 
     @Before
     public void startUp() {
@@ -22,8 +22,8 @@ public class AnnotationTests {
 
     @After
     public void tearDown() {
-        // Закрываем браузер
         driver.quit();
+
     }
 
 }
