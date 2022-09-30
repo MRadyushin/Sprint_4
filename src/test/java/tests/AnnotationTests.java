@@ -17,12 +17,12 @@ public class AnnotationTests {
     @Before
     public void startUp() {
         // Инициализируем WebDriverManager в начале каждого теста
-        //WebDriverManager.chromedriver().setup();
-        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.firefoxdriver().setup();
         // Создаем драйвер под Google Chrome
-        //driver = new ChromeDriver();
+        driver = new ChromeDriver();
         // Создаем драйвер под MozilaFirefox
-        driver = new FirefoxDriver();
+        //driver = new FirefoxDriver();
         // Открываем страницу сайта в браузере
         driver.get("https://qa-scooter.praktikum-services.ru/");
         //Закрываем куки
