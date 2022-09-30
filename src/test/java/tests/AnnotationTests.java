@@ -1,27 +1,37 @@
 package tests;
 
+    import org.openqa.selenium.By;
     import org.openqa.selenium.WebDriver;
     import org.openqa.selenium.chrome.ChromeDriver;
     import org.junit.After;
     import org.junit.Before;
     import io.github.bonigarcia.wdm.WebDriverManager;
+    import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class AnnotationTests {
 
     protected WebDriver driver;
+    //Локатор кнопки Куки
+    protected final By cookieButton = By.xpath("//*[@id=\"rcc-confirm-button\"]");
 
     @Before
     public void startUp() {
         // Инициализируем WebDriverManager в начале каждого теста
-        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
         // Создаем драйвер под Google Chrome
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
+        // Создаем драйвер под MozilaFirefox
+        driver = new FirefoxDriver();
         // Открываем страницу сайта в браузере
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        //Закрываем куки
+        driver.findElement(cookieButton).click();
     }
 
     @After
     public void tearDown() {
+        //Закрываем браузер
         driver.quit();
 
     }

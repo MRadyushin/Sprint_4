@@ -7,9 +7,13 @@ package pagesData;
 
 public class HomePage {
     // Локатор кнопки Заказа в заголовке
-    private final By homeButtonHeader = By.xpath("//*[@id=\"root\']/div/div/div[1]/div[2]/button[1]");
+    private final By homeButtonHeader = By.xpath("//*[@id=\'root\']/div/div/div[1]/div[2]/button[1]");
+
     // Локатор кнопки Заказа в теле
     private final By homeButtonBody = By.xpath("//*[@id=\'root\']/div/div/div[4]/div[2]/div[5]/button");
+
+    // Локатор кнопки куки
+
 
     private String reqText;
     private WebDriver driver;
@@ -48,5 +52,9 @@ public class HomePage {
         //Подставляем текст и находим xpath ответа
         this.answerText = By.xpath(String.format("(.//*[text()='%s'])/following::p[1]", reqText));
     }
+    public void clickHomeButtonHeader() {
+        driver.findElement(homeButtonHeader).click();
+    }
+
 }
 

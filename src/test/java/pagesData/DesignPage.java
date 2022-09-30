@@ -15,19 +15,18 @@ public class DesignPage extends HomePage {
     private final By address = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
 
     // Локатор поля станции метро
-    private final By station = By.cssSelector("input.select-search__input");
+    private final By station = By.xpath("//input[@placeholder='* Станция метро']");
 
     // Локатор поля Телефон
     private final By phone = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
 
     // Локатор кнопки Далее
     private final By nextButton = By.cssSelector("button.Button_Button__ra12g.Button_Middle__1CSJM");
-
     // Локатор поля Даты аренды
     private final By rentalData = By.xpath("//input[@placeholder='* Когда привезти самокат']");
 
     // Локатор поля Время аренды
-    private final By rentalTime = By.xpath("//*/text()[normalize-space(.)='* Срок аренды']/parent::*");
+    private final By rentalTime = By.className("Dropdown-placeholder");
 
     // Локатор поля Цвет
     private By color;
@@ -36,13 +35,13 @@ public class DesignPage extends HomePage {
     private final By comment = By.xpath("//input[@placeholder='Комментарий для курьера']");
 
     // Локатор кнопки Заказать
-    private final By orderButton = By.xpath("(//*/text()[normalize-space(.)='Заказать']/parent::*)[2]");
+    private final By orderButton = By.xpath("//*[@id=\'root\']/div/div[2]/div[3]/button[2]");
 
     // Локатор всплывающего окна
     private final By popupWindow = By.xpath("//div[contains(@class, 'Order_ModalHeader')]");
 
     // Локатор кнопка оформления заказа
-    private final By YesOrderButton = By.xpath("//*/text()[normalize-space(.)='Да']/parent::*");
+    private final By YesOrderButton = By.xpath("//*[@id=\'root\']/div/div[2]/div[5]/div[2]/button[2]");
 
     private WebDriver driver;
 
@@ -84,10 +83,10 @@ public class DesignPage extends HomePage {
     }
 
     //Метод заполнения главной формы
-    public void setFillMainForms(String firstName, String lastName, String address, String metro, String number) {
+    public void setFillMainForms(String firstName, String lastName, String addr, String metro, String number) {
         setName(firstName);
         setSurname(lastName);
-        setAddress(address);
+        setAddress(addr);
         setStation(metro);
         setPhone(number);
     }
@@ -145,9 +144,10 @@ public class DesignPage extends HomePage {
                 .until(ExpectedConditions.elementToBeClickable(popupWindow));
         return driver.findElement(popupWindow).getText();
     }
+
     //Нажатие кнопки Да
-    public void clickMakeOrder() {
-        new WebDriverWait(driver, 3)
+    public void clickRentalConfirmation() {
+        new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.elementToBeClickable(YesOrderButton));
         driver.findElement(YesOrderButton).click();
     }

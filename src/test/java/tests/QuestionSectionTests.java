@@ -39,7 +39,7 @@ package tests;
     public void testRequests() {
 
         HomePage objHomePage = new HomePage(driver);
-        //Открывает вопросы
+        //Открываем вопросы
         objHomePage.openRequests(requestText);
         //Получаем ответы
         String result = objHomePage.getAnswerText(requestText);
