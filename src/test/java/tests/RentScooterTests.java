@@ -47,10 +47,36 @@ public class RentScooterTests extends AnnotationTests {
     }
 
     @Test
-    public void testMakeScooter() {
+    public void testMakeScooterHeader() {
         HomePage objHomePage = new HomePage(driver);
         // Нажатие кнопки Заказать в заголовке
         objHomePage.clickHomeButtonHeader();
+
+        DesignPage objDesignPage = new DesignPage(driver);
+        // Заполнение основных данных
+        objDesignPage.setFillMainForms(firstName, lastName, addr, metro, number);
+
+        // Нажатие кнопки Далее
+        objDesignPage.clickNextButton();
+
+        // Заполнение дополнительных данных
+        objDesignPage.setAdditionalForms(rentData, rentTime, color, comment);
+
+        // Нажатие кнопки Заказть
+        objDesignPage.clickOrderButton();
+
+        // Нажатие кнопки Да для оформления заказа
+        objDesignPage.clickRentalConfirmation();
+
+        // Проверка появления всплывающего окна с сообщением об успешном создании заказа.
+        assertThat("Всплывающее окно с сообщением об успешном создании заказа не появилось", objDesignPage.getPopupWindow(), containsString(result));
+    }
+
+    @Test
+    public void testMakeScooterBody() {
+        HomePage objHomePage = new HomePage(driver);
+        // Нажатие кнопки Заказать в теле
+        objHomePage.clickHomeButtonBody();
 
         DesignPage objDesignPage = new DesignPage(driver);
         // Заполнение основных данных

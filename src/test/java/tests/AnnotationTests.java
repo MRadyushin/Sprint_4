@@ -13,16 +13,22 @@ public class AnnotationTests {
     protected WebDriver driver;
     //Локатор кнопки Куки
     protected final By cookieButton = By.xpath("//*[@id=\"rcc-confirm-button\"]");
+    protected String BROWSER;
 
     @Before
     public void startUp() {
-        // Инициализируем WebDriverManager в начале каждого теста
-        WebDriverManager.chromedriver().setup();
-        //WebDriverManager.firefoxdriver().setup();
-        // Создаем драйвер под Google Chrome
-        driver = new ChromeDriver();
-        // Создаем драйвер под MozilaFirefox
-        //driver = new FirefoxDriver();
+        //BROWSER = "Firefox";
+        BROWSER = "Chrome";
+        if (BROWSER == "Chrome") {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        }
+        else {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        }
+
+
         // Открываем страницу сайта в браузере
         driver.get("https://qa-scooter.praktikum-services.ru/");
         //Закрываем куки

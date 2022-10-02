@@ -56,5 +56,9 @@ public class HomePage {
         driver.findElement(homeButtonHeader).click();
     }
 
+    public void clickHomeButtonBody() {
+        driver.findElement(homeButtonBody).click();
+    }
+
 }
 

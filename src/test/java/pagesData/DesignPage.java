@@ -41,7 +41,7 @@ public class DesignPage extends HomePage {
     private final By popupWindow = By.xpath("//div[contains(@class, 'Order_ModalHeader')]");
 
     // Локатор кнопка оформления заказа
-    private final By YesOrderButton = By.xpath("//*[@id=\'root\']/div/div[2]/div[5]/div[2]/button[2]");
+    private final By yesOrderButton = By.xpath("//*[@id=\'root\']/div/div[2]/div[5]/div[2]/button[2]");
 
     private WebDriver driver;
 
@@ -148,8 +148,8 @@ public class DesignPage extends HomePage {
     //Нажатие кнопки Да
     public void clickRentalConfirmation() {
         new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.elementToBeClickable(YesOrderButton));
-        driver.findElement(YesOrderButton).click();
+                .until(ExpectedConditions.elementToBeClickable(yesOrderButton));
+        driver.findElement(yesOrderButton).click();
     }
 
 }
